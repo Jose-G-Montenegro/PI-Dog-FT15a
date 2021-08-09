@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const axios = require('axios');
 const { API_KEY } = process.env;
-const { Dog, Temperaments,Op } = require('../db') // traigo los modelos de db.js para poder usarlos
+const { Dog, Temperaments, Op } = require('../db') // traigo los modelos de db.js para poder usarlos
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -108,26 +108,45 @@ router.get('/temperament', async (req, res) => {
 })
 
 router.post('/dog', async (req, res) => {
-    const { name, height, weight, temperament, image, life_span, createInDB } = req.body;
-    // const body = req.body;
-    // console.log(body);
-    let newDog = await Dog.create({
+    // const { name, height, weight, temperament, image, life_span, createInDB } = req.body;
+    // // const body = req.body;
+    // // console.log(body);
+    // let newDog = await Dog.create({
+    //     name,
+    //     height,
+    //     weight,
+    //     image,
+    //     life_span,
+    //     createInDB
+    // });
+    // console.log(temperament);
+    // let arr = [...temperament]
+    // console.log(arr, "arr")
+    // let temp = await Temperaments.findAll({where: { name: arr } }  )
+    // console.log(temp, "find")
+    // temp = temp.map(el=> el.id)
+    // console.log(temp,"temp");
+    // console.log(newDog)
+    // await newDog.addTemperaments(temp)
+    // res.send(newDog)
+    const { name, height, weight, life_span, temperament } = req.body;
+    const raza = await Dog.create({
         name,
         height,
         weight,
-        image,
         life_span,
-        createInDB
     });
-    console.log(temperament);
-    let arr = [...temperament]
-    console.log(arr, "arr")
-    let temp = await Temperaments.findAll({where: { name: arr } }  )
-    console.log(temp, "find")
-    temp = temp.map(el=> el.id)
-    console.log(temp,"temp");
-    console.log(newDog)
-    await newDog.addTemperaments(temp)
-    res.send("newDog")
+
+    temperament.forEach(async (temp) => {
+        const temperamento = await Temperaments.findOrCreate({
+            where: { name: temp },
+        });
+        console.log(temperamento)
+        await raza.addTemperaments(temperamento[0]);
+    });
+
+    res.json({
+        ok: true,
+    });
 })
 module.exports = router;
