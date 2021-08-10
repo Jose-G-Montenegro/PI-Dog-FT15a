@@ -135,6 +135,8 @@ router.post('/dog', async (req, res) => {
         height,
         weight,
         life_span,
+        image:`https://i.pinimg.com/564x/1f/fa/f4/1ffaf42fd75e9e01d39547ca46e3e294.jpg`,
+        createInDB : true,
     });
 
     temperament.forEach(async (temp) => {
