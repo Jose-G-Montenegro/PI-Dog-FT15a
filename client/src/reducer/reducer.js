@@ -1,10 +1,10 @@
-import { GET_BREEDS, GET_BYID, GET_BYNAME, GET_TEMPERAMENT} from '../actions/actions';
+import { GET_BREEDS, GET_BYID, GET_BYNAME, GET_TEMPERAMENT } from '../actions/actions';
 
 const initialState = {
     breeds: [],
     temperament: [],
-    breedDetail: [],
-    filterBreed: [],
+    breedDetail:{},
+    filterByName: [],
 }
 
 export default function reducer(state = initialState, action) {
@@ -23,7 +23,7 @@ export default function reducer(state = initialState, action) {
         }
         case GET_BYNAME: return {
             ...state,
-            filterBreed: action.payload
+            filterByName: action.payload
         }
         default: return { ...state }
     }

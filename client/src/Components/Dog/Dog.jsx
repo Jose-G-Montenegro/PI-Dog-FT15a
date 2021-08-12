@@ -1,15 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default function Dog ({ name, id, image, heigth, weigth, temperaments, life_span}){
-    return(
-        <div>
-            <h2>{name}</h2>
-            <h2>{id}</h2>
-            <img src={image} alt="dog img" />
-            <h2>{heigth}</h2>
-            <h2>{weigth}</h2>
-            <h2>{temperaments}</h2>
-            <h2>{life_span}</h2>
+import s from './Dog.module.css'
+
+export default function Dog({ name, id, image, temperament }) {
+    //console.log(temperament)
+    return (
+        <div className={s.all}>
+            <Link to={`/dog/home/${id}`}>
+                <h2>{name}</h2>
+            </Link>
+            <img src={image} alt="dog img" className={s.img} width="200px" height='250px' />
+            <h2>{temperament?.map(el => el + " ")} </h2>
         </div>
     )
 }

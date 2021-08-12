@@ -1,14 +1,8 @@
-.selectors {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.navBtn {
+.ul {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-content: center;
     justify-content: space-evenly;
-    font-family: cursive;
     align-items: center;
 }

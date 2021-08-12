@@ -3,7 +3,6 @@ import {useDispatch} from 'react-redux';
 
 import {getByName} from '../../actions/actions'
 
-
 function SearchBar() {
     const dispatch = useDispatch()
 
@@ -16,12 +15,13 @@ function SearchBar() {
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(getByName(search));
+        console.log(search)
         setSearch('');
     }
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <input type="text" value={search} onChange={onInputChange} />
+                <input type="text" value={search} onChange={onInputChange} /> 
                 <input type="submit" value="search you dog" />
             </form>
         </div>

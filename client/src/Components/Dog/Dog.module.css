@@ -1,0 +1,13 @@
+.all {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 450px;
+    align-items: center;
+    border: double;
+    border-color: sienna;
+    background: bisque;
+    margin: 20px;
+    opacity: 85%;
+    border-radius: 10%;
+}
