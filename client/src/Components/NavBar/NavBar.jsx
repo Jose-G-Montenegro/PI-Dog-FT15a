@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getTemperament, filterTemps } from '../../actions/actions'
 
 import SearchBar from '../SearchBar/SearchBar';
 
@@ -7,6 +10,17 @@ import s from './NavBar.module.css'
 
 export default function NavBar() {
 
+    const dispatch = useDispatch();
+    const temperament = useSelector(state => state.temperament);
+
+    useEffect(() => {
+        dispatch(getTemperament())
+    }, [dispatch]);
+
+    function filterByTemps(e) {
+        console.log(e.target.value)
+        dispatch(filterTemps(e.target.value))
+    }
 
     return (
         <div>
@@ -45,8 +59,9 @@ export default function NavBar() {
                     <option value="az">A-Z</option>
                     <option value="za">Z-A</option>
                 </select>
-                <select className={s.temp}>
-                    <option value="temp">Temperamentos</option>
+                <select className={s.temp} onChange={e => filterByTemps(e)}>
+                    <option value="all">All</option>
+                    {temperament && temperament.map(el => <option key={el.id} value={el.name}>{el.name}</option>)}
                 </select>
             </div>
         </div>

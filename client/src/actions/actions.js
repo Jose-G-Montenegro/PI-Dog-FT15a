@@ -4,6 +4,10 @@ export const GET_BREEDS = 'GET_BREEDS';
 export const GET_BYID = 'GET_BYID';
 export const GET_BYNAME = 'GET_BYNAME';
 export const GET_TEMPERAMENT = 'GET_TEMPERAMENT';
+export const FILTER_AZ = 'FILTER_AZ';
+export const FILTER_ZA = 'FILTER_ZA';
+export const FILTER_TEMPS = 'FILTER_TEMPS';
+
 
 // aqui se conecta el Back y el Front
 export function getBreeds() {
@@ -53,3 +57,24 @@ export function getTemperament() {
             })
     }
 };
+
+export function filterAZ(payload) {
+    return {
+        type: FILTER_AZ,
+        payload
+    }
+}
+
+export function filterZA(payload) {
+    return {
+        type: FILTER_ZA,
+        payload
+    }
+}
+
+export function filterTemps(payload) {
+    return {
+        type: FILTER_TEMPS,
+        payload
+    }
+}
