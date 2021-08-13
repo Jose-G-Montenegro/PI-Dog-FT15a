@@ -36,6 +36,7 @@ export default function Dogs() {
             <div className={s.div}>{
                 currentBreeds && currentBreeds.map(breed => {
                     return <Dog
+                        key={breed.id}
                         name={breed.name}
                         id={breed.id}
                         image={breed.image}

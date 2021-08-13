@@ -25,7 +25,6 @@ function App() {
       <Route path='/dog' component={NavBar} />
       <Route exact path='/dog/home' component={Home} />
       <Route exact path="/dog/home/:id" component={Detail} />
-
       <Route exact path='/dog/createDog' component={CreateDog} />
       <Route exact path='/dog/search' component={SearchDogs} />
     </div>

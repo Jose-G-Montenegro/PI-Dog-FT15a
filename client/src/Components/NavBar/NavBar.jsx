@@ -40,12 +40,10 @@ export default function NavBar() {
                     <option value="crea">Creados</option>
                 </select>
                 <select className={s.az}>
-                    <option value="az">A-Z</option>
-                    <option value="za">Z-A</option>
-                </select>
-                <select className={s.weigth} >
                     <option value="mas">+ Weigth</option>
                     <option value="menos">- Weigth</option>
+                    <option value="az">A-Z</option>
+                    <option value="za">Z-A</option>
                 </select>
                 <select className={s.temp}>
                     <option value="temp">Temperamentos</option>

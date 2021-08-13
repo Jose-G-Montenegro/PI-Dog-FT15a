@@ -28,7 +28,7 @@ export function getById(id) {
                 })
             })
     }
-};
+}
 
 export function getByName(name) {
     return function (dispatch) {

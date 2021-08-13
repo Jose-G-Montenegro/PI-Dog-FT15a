@@ -78,6 +78,9 @@ router.get('/dogs', async (req, res) => {
             res.status(200).send(dogName) :
             res.status(400).send('La raza de perro ingresada no existe');
     }
+    else if( name === undefined) {
+        res.status(200).send(allDog);
+    }
     else {
         res.status(200).send(allDog);
     }
@@ -91,7 +94,7 @@ router.get('/dogs/:idRaza', async (req, res) => {
     console.log(allDog)
     let dogName = allDog.filter(el => el.id == id); // le coloco == por que no son el mismo tipo de dato 
     dogName.length ? // consulto si existe dogName - es un ternario
-        res.status(200).send(dogName) :
+        res.status(200).send(dogName[0]) :
         res.status(400).send('La raza de perro ingresada no existe');
 })
 

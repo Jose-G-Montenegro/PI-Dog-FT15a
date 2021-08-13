@@ -1,7 +1,8 @@
-import React,{useState} from 'react';
-import {useDispatch} from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import {getByName} from '../../actions/actions'
+import { getByName } from '../../actions/actions'
 
 function SearchBar() {
     const dispatch = useDispatch()
@@ -12,18 +13,37 @@ function SearchBar() {
         setSearch(e.target.value)
     }
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        dispatch(getByName(search));
-        console.log(search)
-        setSearch('');
+    function handleSubmit() {
+        if (search !== '') {
+            dispatch(getByName(search));
+            console.log(search)
+            setSearch('');
+        } else {
+            return alert('ingresa raza')
+        }
     }
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={search} onChange={onInputChange} /> 
-                <input type="submit" value="search you dog" />
-            </form>
+            <div >
+                <input
+                    type="text"
+                    placeholder="Search by name"
+                    name="input"
+                    onChange={(e) => onInputChange(e)}
+                />
+                <div>{search !== '' ?
+                    <Link to='/dog/search'>
+                        <button onClick={() => handleSubmit()}>
+                            Search
+                        </button>
+                    </Link> :
+                    <Link to='/dog/home'>
+                        <button onClick={() => handleSubmit()}>
+                            Search
+                        </button>
+                    </Link>}
+                </div>
+            </div>
         </div>
     )
 }
