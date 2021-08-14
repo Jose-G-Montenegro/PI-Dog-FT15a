@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTemperament, filterTemps } from '../../actions/actions'
+import { getTemperament, filterTemps, filterCreate, order } from '../../actions/actions'
 
 import SearchBar from '../SearchBar/SearchBar';
 
@@ -17,9 +17,19 @@ export default function NavBar() {
         dispatch(getTemperament())
     }, [dispatch]);
 
+    //FILTRADOS
     function filterByTemps(e) {
-        console.log(e.target.value)
+        // e = value del option = action.payload
+        // console.log(e.target.value)
         dispatch(filterTemps(e.target.value))
+    }
+    function filterPerCreate(e) {
+        //console.log(e.target.value)
+        dispatch(filterCreate(e.target.value))
+    }
+    function orderPage(e) {
+        console.log(e.target.value)
+        dispatch(order(e.target.value))
     }
 
     return (
@@ -48,16 +58,16 @@ export default function NavBar() {
                 </div>
             </div>
             <div className={s.selectors}>
-                <select className={s.selAll} >
-                    <option value="tod">Todos</option>
-                    <option value="exis">Existentes</option>
-                    <option value="crea">Creados</option>
+                <select className={s.selAll} onChange={e => filterPerCreate(e)} >
+                    <option value="all">Todos</option>
+                    <option value="api">Existentes</option>
+                    <option value="DB">Creados</option>
                 </select>
-                <select className={s.az}>
+                <select className={s.az} onChange={e => orderPage(e)} >
                     <option value="mas">+ Weigth</option>
                     <option value="menos">- Weigth</option>
-                    <option value="az">A-Z</option>
-                    <option value="za">Z-A</option>
+                    <option value="a_z">A-Z</option>
+                    <option value="z_a">Z-A</option>
                 </select>
                 <select className={s.temp} onChange={e => filterByTemps(e)}>
                     <option value="all">All</option>
