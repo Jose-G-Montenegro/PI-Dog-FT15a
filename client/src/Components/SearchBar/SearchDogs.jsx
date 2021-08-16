@@ -12,7 +12,7 @@ export default function SearchDogs() {
 
     return (
         <div className={s.div}>{
-            filterByName && filterByName.map(breed => {
+            filterByName ? filterByName.map(breed => {
                 return <Dog
                     key={breed.id}
                     name={breed.name}
@@ -23,7 +23,8 @@ export default function SearchDogs() {
                     temperament={breed.temperament}
                     life_span={breed.life_span}
                 />
-            })
+            }):
+            alert("raza no existente")
 
         }
         </div>

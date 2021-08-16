@@ -8,10 +8,10 @@ export default function Dog({ name, id, image, temperament }) {
     return (
         <div className={s.all}>
             <Link to={`/dog/home/${id}`}>
-                <h2>{name}</h2>
+                <h2 className={s.title}>{name}</h2>
             </Link>
-            <img src={image} alt="dog img" className={s.img} width="200px" height='250px' />
-            <h2>{temperament?.map(el => el + " ")} </h2>
+            <img src={image} alt="dog img" className={s.img} />
+            <h2 className={s.temp}>{temperament ? temperament.map(el => el +' ') :'without temperaments'} </h2>
         </div>
     )
 }

@@ -31,9 +31,11 @@ export default function NavBar() {
         console.log(e.target.value)
         dispatch(order(e.target.value))
     }
+    
 
     return (
         <div>
+            
             <div className={s.navBtn}>
                 <div>
                     <h1>DOGS</h1>

@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const axios = require('axios');
 const { API_KEY } = process.env;
-const { Dog, Temperaments, Op } = require('../db') // traigo los modelos de db.js para poder usarlos
+const { Dog, Temperaments } = require('../db') // traigo los modelos de db.js para poder usarlos
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -25,12 +25,13 @@ const getApiInfo = async () => { // traigo la info que necesito de la api
             image: el.image.url,
         }
     });
+    //dogs.map(el =>console.log(el.weight))
     return dogs
 }
 
 const getDBInfo = async () => { // trigo la info de la BdD
     return await Dog.findAll({ //await para esperar que busque, busca todo en el model Dog
-        includes: { // inclui el model Temperaments, especificamente el atributo name
+        includes: { // incluyo el model Temperaments, especificamente el atributo name
             model: Temperaments,
             attributes: ['name'],
             through: {
@@ -47,26 +48,6 @@ const getAllInfo = async () => { // concateno en una funcion la llamada a la api
     return allInfo
 };
 
-const getAllTemps = async () => {
-    try {
-        const url = await getApiInfo();
-        let arr = [];
-        // console.log(url)
-        url.map(el => {
-            if (el.temperament) {
-                // console.log(el)
-                arr = [...arr, ...el.temperament]
-            }
-        }); // algunos llegan undefined, por eso el ternario. array de array
-        arr = [...new Set(arr)].sort();
-        console.log(arr)
-        return arr
-    } catch (error) {
-        console.log(error)
-    }
-
-};
-
 //ROUTING
 
 router.get('/dogs', async (req, res) => {
@@ -78,7 +59,7 @@ router.get('/dogs', async (req, res) => {
             res.status(200).send(dogName) :
             res.status(400).send('La raza de perro ingresada no existe');
     }
-    else if( name === undefined) {
+    else if (name === undefined) {
         res.status(200).send(allDog);
     }
     else {
@@ -88,10 +69,10 @@ router.get('/dogs', async (req, res) => {
 
 router.get('/dogs/:idRaza', async (req, res) => {
     const id = req.params.idRaza  // busco por params
-    console.log(id);
+    //console.log(id);
 
     let allDog = await getAllInfo();
-    console.log(allDog)
+    //console.log(allDog)
     let dogName = allDog.filter(el => el.id == id); // le coloco == por que no son el mismo tipo de dato 
     dogName.length ? // consulto si existe dogName - es un ternario
         res.status(200).send(dogName[0]) :
@@ -99,13 +80,8 @@ router.get('/dogs/:idRaza', async (req, res) => {
 })
 
 router.get('/temperament', async (req, res) => {
-    const allTemps = await getAllTemps();
-    console.log(allTemps)
-    allTemps.map(el => {
-        Temperaments.findOrCreate({ // en la base de datos, en la tabla temperaments, creo cada uno de los teperamentos, si ya esta no lo agrega
-            where: { name: el }
-        })
-    })
+
+
     const temperaments = await Temperaments.findAll(); // busco todo en la tabla temperaments
     res.send(temperaments)
 })
@@ -132,26 +108,42 @@ router.post('/dog', async (req, res) => {
     // console.log(newDog)
     // await newDog.addTemperaments(temp)
     // res.send(newDog)
-    const { name, height, weight, life_span, temperament } = req.body;
-    const raza = await Dog.create({
-        name,
-        height,
-        weight,
-        life_span,
-        image:`https://i.pinimg.com/564x/1f/fa/f4/1ffaf42fd75e9e01d39547ca46e3e294.jpg`,
-        createInDB : true,
-    });
+    // const { name, height, weight, life_span, temperament } = req.body;
+    // const raza = await Dog.create({
+    //     name,
+    //     height,
+    //     weight,
+    //     life_span,
+    //     image: `https://i.pinimg.com/564x/1f/fa/f4/1ffaf42fd75e9e01d39547ca46e3e294.jpg`,
+    //     createInDB: true,
+    // });
 
-    temperament.forEach(async (temp) => {
-        const temperamento = await Temperaments.findOrCreate({
-            where: { name: temp },
+    // temperament.forEach(async (temp) => {
+    //     const temperamento = await Temperaments.findOrCreate({
+    //         where: { name: temp },
+    //     });
+    //     console.log(temperamento)
+    //     await raza.addTemperaments(temperamento[0]);
+    // });
+
+    // res.json({
+    //     raza
+    // });
+    const { name, height, weight, life_span, temperaments } = req.body;
+    try {
+        const raza = await Dog.create({
+            name,
+            height,
+            weight,
+            life_span,
+            image: `https://i.pinimg.com/564x/1f/fa/f4/1ffaf42fd75e9e01d39547ca46e3e294.jpg`,
+            createInDB: true,
         });
-        console.log(temperamento)
-        await raza.addTemperaments(temperamento[0]);
-    });
 
-    res.json({
-        ok: true,
-    });
+        (await temperaments) && raza.setTemperaments(temperaments);
+        res.send(raza);
+    } catch (error) {
+        console.log(error);
+    }
 })
 module.exports = router;

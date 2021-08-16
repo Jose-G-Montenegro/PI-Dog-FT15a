@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+  /* Color Theme Swatches in Hex */
+.verde-y-marron-1-hex { color: #5D8F8E; }
+.verde-y-marron-2-hex { color: #8AA74B; }
+.verde-y-marron-3-hex { color: #BBCC8D; }
+.verde-y-marron-4-hex { color: #A9803E; }
+.verde-y-marron-5-hex { color: #C9AF8B; }
+
+/* Color Theme Swatches in RGBA */
+.verde-y-marron-1-rgba { color: rgba(93, 142, 142, 1); }
+.verde-y-marron-2-rgba { color: rgba(137, 167, 75, 1); }
+.verde-y-marron-3-rgba { color: rgba(186, 204, 140, 1); }
+.verde-y-marron-4-rgba { color: rgba(168, 128, 61, 1); }
+.verde-y-marron-5-rgba { color: rgba(200, 175, 138, 1); }
+
+/* Color Theme Swatches in HSLA */
+.verde-y-marron-1-hsla { color: hsla(178, 21, 46, 1); }
+.verde-y-marron-2-hsla { color: hsla(78, 38, 47, 1); }
+.verde-y-marron-3-hsla { color: hsla(76, 38, 67, 1); }
+.verde-y-marron-4-hsla { color: hsla(37, 46, 45, 1); }
+.verde-y-marron-5-hsla { color: hsla(34, 36, 66, 1); }
+
+
