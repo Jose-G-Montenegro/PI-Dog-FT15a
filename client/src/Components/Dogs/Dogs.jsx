@@ -35,12 +35,14 @@ export default function Dogs() {
             </div>
             <div className={s.div}>{
                 currentBreeds && currentBreeds.map(breed => {
+                    console.log(breed.temperaments)
                     return <Dog
                         key={breed.id}
                         name={breed.name}
                         id={breed.id}
                         image={breed.image}
-                        temperament={breed.temperament}
+                        temperament={breed.temperaments}
+                        // vw ancho - vh alto
                     />
                 })
 

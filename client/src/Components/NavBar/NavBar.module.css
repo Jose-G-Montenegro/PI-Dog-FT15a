@@ -1,3 +1,8 @@
+.all{
+    background-color: #12401d;
+    color: #BBCC8D;
+}
+
 .selectors {
     display: flex;
     justify-content: space-evenly;
@@ -12,3 +17,55 @@
     font-family: cursive;
     align-items: center;
 }
+
+.ind{
+  display: block;
+  font-size: 16px;
+  font-family: cursive;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  padding: .4em 1.4em .3em .8em;
+  max-width: 100%;
+  margin: 20px auto;
+  border: 1px solid #aaa;
+      border-top-color: rgb(170, 170, 170);
+      border-right-color: rgb(170, 170, 170);
+      border-bottom-color: rgb(170, 170, 170);
+      border-left-color: rgb(170, 170, 170);
+  border-top-color: rgb(170, 170, 170);
+  border-right-color: rgb(170, 170, 170);
+  border-bottom-color: rgb(170, 170, 170);
+  border-left-color: rgb(170, 170, 170);
+  border-radius: .3em;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #BBCC8D;
+  background-image: url('https://i.pinimg.com/originals/2d/e0/9a/2de09a70a2557df7c79ac0914646c746.png');
+  background-repeat: no-repeat, repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
+}
+
+.ind::-ms-expand {
+    display: none;
+  }
+  .ind:hover {
+    border-color: #888;
+  }
+  .ind:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222; 
+    outline: none;
+  }
+  .ind option {
+    font-weight:normal;
+  }
+  
+  
+  .classOfElementToColor:hover {background-color:red; color:black}
+  
+  .ind option[selected] {
+      background-color: orange;
+  }

@@ -13,7 +13,7 @@ function Paged({ breedsPerPage, breeds, paged }) {
             <ul className={s.ul}>
                 {
                     pageNumber && pageNumber.map(num => (
-                        <button key={num} className={s.a} onClick={() => paged(num)} >{num}</button>// por cada numero de pagina creo un boton 
+                        <button key={num} className={s.btn} onClick={() => paged(num)} >{num}</button>// por cada numero de pagina creo un boton 
                     ))
                 }
             </ul>

@@ -4,23 +4,30 @@
     width: 350px;
     height: 450px;
     align-items: center;
-    border: double;
+    /* border: double; */
     border-color: #A9803E;
     background: #C9AF8B;
     margin: 20px;
     opacity: 85%;
     border-radius: 10%;
+    box-shadow: 0 2px 3px #000000;
+}
+.all:hover{
+    box-shadow: 0 2px 3px #000000 inset;
 }
 
 .title{
-    font-family: Arial;
-    text-decoration: none;
-    color: #292f2f;
+    font-family: ui-monospace;
+    color: black;
+    font-style: oblique;
+    font-weight: bold;
+    -webkit-text-stroke: thin;
 }
 
 .img {
     width: 200px;
     height: 250px;
+    border-radius: 2%;
 }
 
 .temp{

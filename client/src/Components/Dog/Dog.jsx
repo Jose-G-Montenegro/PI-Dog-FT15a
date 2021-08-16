@@ -11,7 +11,11 @@ export default function Dog({ name, id, image, temperament }) {
                 <h2 className={s.title}>{name}</h2>
             </Link>
             <img src={image} alt="dog img" className={s.img} />
-            <h2 className={s.temp}>{temperament ? temperament.map(el => el +' ') :'without temperaments'} </h2>
+            <h2 className={s.temp}>{temperament ?
+                typeof temperament[0] === 'object' ?
+                    temperament.map(el => ' *' + el.temperament + '* ') :
+                    temperament.map(el => ' *' + el + '* ') :
+                'sin temperamentos'} </h2>
         </div>
     )
 }

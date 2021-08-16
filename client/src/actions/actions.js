@@ -49,7 +49,7 @@ export function getByName(name) {
 export function getTemperament() {
     return function (dispatch) {
         return axios.get('http://localhost:3001/temperament')
-            .then((response) => {
+            .then((response) => { console.log(response.data)
                 dispatch({
                     type: GET_TEMPERAMENT,
                     payload: response.data,

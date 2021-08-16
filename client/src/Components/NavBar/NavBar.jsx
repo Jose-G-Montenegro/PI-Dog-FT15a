@@ -34,7 +34,7 @@ export default function NavBar() {
     
 
     return (
-        <div>
+        <div className={s.all}>
             
             <div className={s.navBtn}>
                 <div>
@@ -60,20 +60,20 @@ export default function NavBar() {
                 </div>
             </div>
             <div className={s.selectors}>
-                <select className={s.selAll} onChange={e => filterPerCreate(e)} >
+                <select className={s.ind} onChange={e => filterPerCreate(e)} >
                     <option value="all">Todos</option>
                     <option value="api">Existentes</option>
                     <option value="DB">Creados</option>
                 </select>
-                <select className={s.az} onChange={e => orderPage(e)} >
+                <select className={s.ind} onChange={e => orderPage(e)} >
                     <option value="mas">+ Weigth</option>
                     <option value="menos">- Weigth</option>
                     <option value="a_z">A-Z</option>
                     <option value="z_a">Z-A</option>
                 </select>
-                <select className={s.temp} onChange={e => filterByTemps(e)}>
+                <select className={s.ind} onChange={e => filterByTemps(e)}>
                     <option value="all">All</option>
-                    {temperament && temperament.map(el => <option key={el.id} value={el.name}>{el.name}</option>)}
+                    {temperament && temperament.map(el => <option key={el.id} value={el.temperament}>{el.temperament}</option>)}
                 </select>
             </div>
         </div>

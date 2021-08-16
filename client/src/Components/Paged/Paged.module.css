@@ -5,4 +5,28 @@
     align-content: center;
     justify-content: space-evenly;
     align-items: center;
+    color: #12401d;
 }
+.btn {
+    padding: .4rem 0.8rem;
+    margin: px;
+    border: 1px solid #995309;
+    border-radius: 4px;
+    background-color: #A9803E;
+    color: #BBCC8D;
+    font-size: 1.5rem;
+    text-shadow: 0 -1px 0 rgb(0 0 0 / 50%);
+    box-shadow: 0 1px 0 rgb(255 255 255 / 50%) inset, 0 1px 3px rgb(0 0 0 / 20%);
+    background-image: linear-gradient(#A9803E 10%,#A9803E 100%);
+  }
+  
+  .btn:hover, .btn:focus {
+    background-color: #C9AF8B;
+    background-image: linear-gradient(#C9AF8B 10%,#C9AF8B 100%);
+  }
+  
+  .btn:active {
+    background-color: #C9AF8B;
+    box-shadow: 0 2px 3px 0 rgb(0 0 0 / 20%) inset;
+    background-image: linear-gradient(#C9AF8B 10%,#C9AF8B 100%);
+  }
