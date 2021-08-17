@@ -1,5 +1,5 @@
 .all{
-    background-color: #12401d;
+    background-color: #402712;
     color: #BBCC8D;
 }
 
@@ -36,6 +36,10 @@
   border-right-color: rgb(170, 170, 170);
   border-bottom-color: rgb(170, 170, 170);
   border-left-color: rgb(170, 170, 170);
+  border-top-color: rgb(170, 170, 170);
+  border-right-color: rgb(170, 170, 170);
+  border-bottom-color: rgb(170, 170, 170);
+  border-left-color: rgb(170, 170, 170);
   border-radius: .3em;
   -webkit-appearance: none;
   appearance: none;
@@ -43,7 +47,7 @@
   background-image: url('https://i.pinimg.com/originals/2d/e0/9a/2de09a70a2557df7c79ac0914646c746.png');
   background-repeat: no-repeat, repeat;
   background-position: right .7em top 50%, 0 0;
-  background-size: .65em auto, 100%;
+  background-size: .7em auto, 100%;
 }
 
 .ind::-ms-expand {

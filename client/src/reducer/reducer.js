@@ -48,7 +48,7 @@ export default function reducer(state = initialState, action) {
             //console.log(allBreeds.filter(el => el.temperament?.includes(action.payload)));
             const filterTemps = action.payload === 'all' ?
                 allBreeds :
-                allBreeds.filter(el => el.temperament?.includes(action.payload));
+                allBreeds.filter(el => el.temperaments?.includes(action.payload));
             // console.log(filterTemps)
             return {
                 ...state,
