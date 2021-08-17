@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { getByName } from '../../actions/actions'
 
+import s from './SearchBar.module.css';
+
 function SearchBar() {
     const dispatch = useDispatch()
 
@@ -24,8 +26,9 @@ function SearchBar() {
     }
     return (
         <div>
-            <div >
+            <div className={s.all} >
                 <input
+                className={s.input}
                     type="text"
                     placeholder="Search by name"
                     name="input"
@@ -33,12 +36,12 @@ function SearchBar() {
                 />
                 <div>{search !== '' ?
                     <Link to='/dog/search'>
-                        <button onClick={() => handleSubmit()}>
+                        <button className={s.button} onClick={() => handleSubmit()}>
                             Search
                         </button>
                     </Link> :
                     <Link to='/dog/home'>
-                        <button onClick={() => handleSubmit()}>
+                        <button className={s.button} onClick={() => handleSubmit()}>
                             Search
                         </button>
                     </Link>}

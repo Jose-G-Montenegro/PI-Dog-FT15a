@@ -73,3 +73,18 @@
   .ind option[selected] {
       background-color: orange;
   }
+
+  button{
+    border: 1px solid #995309;
+    border-radius: 4px;
+    background-color: #BBCC8D;
+    font-size: 1.5rem;
+    text-shadow: 0 -1px 0 rgb(0 0 0 / 50%);
+    box-shadow: 0 1px 0 rgb(255 255 255 / 50%) inset, 0 1px 3px rgb(0 0 0 / 20%);
+    background-image: linear-gradient(#BBCC8D 10%, #BBCC8D 100%);
+    height: 41px;
+  }
+
+  h1{
+    font-size: -webkit-xxx-large;
+  }

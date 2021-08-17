@@ -20,7 +20,7 @@ export default function Dogs() {
 
     // paginado
     const [currentPage, setCurrentPage] = useState(1); //pagina actual
-    const [breedsPerPage, setBreedsPerPage] = useState(9); // razas por paginado
+    const breedsPerPage = 9; // razas por paginado
     const indexOfLastBreeds = currentPage * breedsPerPage; // indice (pos) de laultima raza raza
     const indexOfFirstBreeds = indexOfLastBreeds - breedsPerPage; // indice (pos) de la primera raza
     const currentBreeds = breeds.slice(indexOfFirstBreeds, indexOfLastBreeds); //razas renderizando en la pag

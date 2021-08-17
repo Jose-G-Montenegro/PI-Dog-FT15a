@@ -13,6 +13,7 @@ export default function SearchDogs() {
     return (
         <div className={s.div}>{
             filterByName ? filterByName.map(breed => {
+                console.log(breed)
                 return <Dog
                     key={breed.id}
                     name={breed.name}
@@ -20,7 +21,7 @@ export default function SearchDogs() {
                     image={breed.image}
                     height={breed.height}
                     weight={breed.weight}
-                    temperament={breed.temperament}
+                    temperament={breed.temperaments}
                     life_span={breed.life_span}
                 />
             }):
