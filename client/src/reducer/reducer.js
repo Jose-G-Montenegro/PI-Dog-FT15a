@@ -46,7 +46,8 @@ export default function reducer(state = initialState, action) {
         case GET_BYNAME:
             return {
                 ...state,
-                filterByName: action.payload
+                filterByName: action.payload,
+                page:1
             }
 
         case PAGE:
