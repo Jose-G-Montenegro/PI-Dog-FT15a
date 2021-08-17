@@ -32,7 +32,7 @@ const getApiInfo = async () => { // traigo la info que necesito de la api
 const getDBInfo = async () => { // trigo la info de la BdD
     return await Dog.findAll(
         { //await para esperar que busque, busca todo en el model Dog
-            include: // incluyo el model Temperaments, especificamente el atributo name
+            include: // incluyo el model Temperaments
                 Temperament
         }
     );
@@ -41,7 +41,7 @@ const getDBInfo = async () => { // trigo la info de la BdD
 const getAllInfo = async () => { // concateno en una funcion la llamada a la api y a la info
     const apiInfo = await getApiInfo();     //await para esperar la llamada
     const DBinfo = await getDBInfo();
-    console.log(DBinfo.temperaments)   //await para esperar la llamada
+    //console.log(DBinfo.temperaments)   //await para esperar la llamada
     const allInfo = apiInfo.concat(DBinfo);
     return allInfo
 };
@@ -78,55 +78,11 @@ router.get('/dogs/:idRaza', async (req, res) => {
 })
 
 router.get('/temperament', async (req, res) => {
-
-
     const temperaments = await Temperament.findAll(); // busco todo en la tabla temperaments
     res.send(temperaments)
 })
 
 router.post('/dog', async (req, res) => {
-    // const { name, height, weight, temperament, image, life_span, createInDB } = req.body;
-    // // const body = req.body;
-    // // console.log(body);
-    // let newDog = await Dog.create({
-    //     name,
-    //     height,
-    //     weight,
-    //     image,
-    //     life_span,
-    //     createInDB
-    // });
-    // console.log(temperament);
-    // let arr = [...temperament]
-    // console.log(arr, "arr")
-    // let temp = await Temperaments.findAll({where: { name: arr } }  )
-    // console.log(temp, "find")
-    // temp = temp.map(el=> el.id)
-    // console.log(temp,"temp");
-    // console.log(newDog)
-    // await newDog.addTemperaments(temp)
-    // res.send(newDog)
-    // const { name, height, weight, life_span, temperament } = req.body;
-    // const raza = await Dog.create({
-    //     name,
-    //     height,
-    //     weight,
-    //     life_span,
-    //     image: `https://i.pinimg.com/564x/1f/fa/f4/1ffaf42fd75e9e01d39547ca46e3e294.jpg`,
-    //     createInDB: true,
-    // });
-
-    // temperament.forEach(async (temp) => {
-    //     const temperamento = await Temperaments.findOrCreate({
-    //         where: { name: temp },
-    //     });
-    //     console.log(temperamento)
-    //     await raza.addTemperaments(temperamento[0]);
-    // });
-
-    // res.json({
-    //     raza
-    // });
     const { name, height, weight, life_span, temperaments } = req.body;
     try {
         const raza = await Dog.create({
@@ -134,12 +90,12 @@ router.post('/dog', async (req, res) => {
             height,
             weight,
             life_span,
-            image: `https://i.pinimg.com/564x/1f/fa/f4/1ffaf42fd75e9e01d39547ca46e3e294.jpg`,
+            image: `https://1.bp.blogspot.com/-oBY2lZWjIDg/XqMU2oKTBiI/AAAAAAAAR9A/QD-GyOTS3TYSsitNaMFlAwS9TMYi_v0jgCLcBGAsYHQ/s1600/24.png`,
             createInDB: true,
         });
         let busc = await Temperament.findAll({
-            where : {
-                temperament:temperaments
+            where: {
+                temperament: temperaments
             }
         })
         raza.setTemperaments(busc);
