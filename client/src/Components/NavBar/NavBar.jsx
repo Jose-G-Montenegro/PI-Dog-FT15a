@@ -31,8 +31,6 @@ export default function NavBar() {
         console.log(e.target.value)
         dispatch(order(e.target.value))
     }
-    
-
     return (
         <div className={s.all}>
             

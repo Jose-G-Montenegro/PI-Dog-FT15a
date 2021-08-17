@@ -16,6 +16,7 @@ export default function Dogs() {
     //console.log(breeds);
     useEffect(() => {
         dispatch(getBreeds());
+        setCurrentPage(1)
     }, [dispatch]);
 
     // paginado
