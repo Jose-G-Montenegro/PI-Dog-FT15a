@@ -1,5 +1,5 @@
 const axios = require('axios');
-const {Temperaments} = require ("../db")
+const {Temperament} = require ("../db")
 const { API_KEY } = process.env;
 
 const getAllTemps = async () => {
@@ -15,8 +15,8 @@ const getAllTemps = async () => {
             }
         }); 
         arr = [...new Set(arr)].sort().map(el => {
-            Temperaments.findOrCreate({ // en la base de datos, en la tabla temperaments, creo cada uno de los teperamentos, si ya esta no lo agrega
-                where: { name: el }
+            Temperament.findOrCreate({ // en la base de datos, en la tabla temperaments, creo cada uno de los teperamentos, si ya esta no lo agrega
+                where: { temperament: el }
             })
         })
         // arr.map(el => {
@@ -25,7 +25,7 @@ const getAllTemps = async () => {
         //         })
         //     })
 
-        console.log(arr.length)
+        //console.log(arr.length)
     } catch (error) {
         console.log(error)
     }

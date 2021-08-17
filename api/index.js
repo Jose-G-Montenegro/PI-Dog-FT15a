@@ -25,7 +25,7 @@ const {getAllTemps} = require('./src/routes/getTemps');
 conn.sync({ force: true}).then(() => {
   server.listen(3001, () => {
     getAllTemps();
-    console.log('conect dataBase')
+    console.log('temps in dataBase')
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
