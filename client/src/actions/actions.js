@@ -7,6 +7,7 @@ export const GET_TEMPERAMENT = 'GET_TEMPERAMENT';
 export const ORDER = 'ORDER';
 export const FILTER_TEMPS = 'FILTER_TEMPS';
 export const FILTER_CREATE = 'FILTER_CREATE';
+export const PAGE = 'PAGE';
 
 
 // aqui se conecta el Back y el Front
@@ -70,6 +71,13 @@ export function sendDogs(dog) {
 export function filterTemps(payload) {
     return {
         type: FILTER_TEMPS,
+        payload
+    }
+}
+
+export function page(payload){
+    return{
+        type: PAGE,
         payload
     }
 }

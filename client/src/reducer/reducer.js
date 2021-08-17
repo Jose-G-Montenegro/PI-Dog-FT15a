@@ -1,7 +1,8 @@
-import { FILTER_CREATE, FILTER_TEMPS, GET_BREEDS, GET_BYID, GET_BYNAME, GET_TEMPERAMENT, ORDER } from '../actions/actions';
+import { FILTER_CREATE, FILTER_TEMPS, GET_BREEDS, GET_BYID, GET_BYNAME, PAGE, GET_TEMPERAMENT, ORDER } from '../actions/actions';
 
 const initialState = {
     breeds: [],
+    page: 1,
     allBreeds: [],
     temperament: [],
     breedDetail: {},
@@ -48,6 +49,12 @@ export default function reducer(state = initialState, action) {
                 filterByName: action.payload
             }
 
+        case PAGE:
+            return{
+                ...state,
+                page :action.payload
+            }
+
         case FILTER_TEMPS:
             const allBreeds = state.allBreeds;
             console.log(allBreeds);
@@ -64,7 +71,8 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 breeds: action.payload === 'all' ?
-                    allBreeds : filt
+                    allBreeds : filt,
+                    page:1
             }
 
         case FILTER_CREATE:

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Dog from '../Dog/Dog';
 
-import { getBreeds } from '../../actions/actions';//all Breeds
+import { getBreeds, page } from '../../actions/actions';//all Breeds
 
 import s from './Dogs.module.css'
 import Paged from '../Paged/Paged';
@@ -12,21 +12,20 @@ import Paged from '../Paged/Paged';
 export default function Dogs() {
     // all breeds
     const dispatch = useDispatch();
+    const nPage = useSelector(state => state.page)
     const breeds = useSelector(state => state.breeds);
     //console.log(breeds);
     useEffect(() => {
         dispatch(getBreeds());
-        setCurrentPage(1)
     }, [dispatch]);
 
     // paginado
-    const [currentPage, setCurrentPage] = useState(1); //pagina actual
     const breedsPerPage = 9; // razas por paginado
-    const indexOfLastBreeds = currentPage * breedsPerPage; // indice (pos) de laultima raza raza
+    const indexOfLastBreeds = nPage * breedsPerPage; // indice (pos) de laultima raza raza
     const indexOfFirstBreeds = indexOfLastBreeds - breedsPerPage; // indice (pos) de la primera raza
     const currentBreeds = breeds.slice(indexOfFirstBreeds, indexOfLastBreeds); //razas renderizando en la pag
     const paged = (pageNumber) => {
-        setCurrentPage(pageNumber)
+        dispatch(page(pageNumber))
     }
 
     return (
