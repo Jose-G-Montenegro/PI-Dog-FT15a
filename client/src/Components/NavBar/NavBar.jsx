@@ -40,11 +40,11 @@ export default function NavBar() {
                 <div>
                     <h1>DOGS</h1>
                 </div>
-                <div>
+                {/* <div>
                     <Link to='/'>
                         <button>Init</button>
                     </Link>
-                </div>
+                </div> */}
                 <div>
                     <Link to='/dog/home'>
                         <button>Home</button>
@@ -61,9 +61,9 @@ export default function NavBar() {
             </div>
             <div className={s.selectors}>
                 <select className={s.ind} onChange={e => filterPerCreate(e)} >
-                    <option value="all">Todos</option>
-                    <option value="api">Existentes</option>
-                    <option value="DB">Creados</option>
+                    <option value="all">All</option>
+                    <option value="api">Api Dogs</option>
+                    <option value="DB">Createds</option>
                 </select>
                 <select className={s.ind} onChange={e => orderPage(e)} >
                     <option value="mas">+ Weigth</option>

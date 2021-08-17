@@ -6,10 +6,12 @@ import s from './Init.module.css'
 export default function init() {
     return (
         <div className={s.all}>
-            <h1>Welcome</h1>
-            <Link to='/dog/home'>
-                <button>Home</button>
-            </Link>
+            <div className={s.container}>
+                <h1 className={s.title}>Welcome</h1>
+                <Link to='/dog/home'>
+                    <button>Home</button>
+                </Link>
+            </div>
         </div>
     )
 }

@@ -2,109 +2,126 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperament, sendDogs } from "../../actions/actions";
-import { Link } from "react-router-dom";
+
+import s from './CreateDog.module.css'
 
 export default function Send() {
 
   const [temps, setTemps] = useState("");
-  const [objCreate, setObjCreate] = useState({
+  const [dogCreate, setDogCreate] = useState({
     name: "",
     height: "",
     weight: "",
     life_span: "",
     temperaments: [],
-  })
+  });
 
   const dispatch = useDispatch();
   const temp = useSelector((state) => state.temperament);
-  console.log(temp)
+  //console.log(temp)
 
   function HandleChange(e) {
-    let temporal = {...objCreate}
+    setDogCreate({
+      ...dogCreate,
+      [e.target.name]: e.target.value
+    });
+  };
 
-    temporal[e.target.name]= e.target.value
-    setObjCreate(temporal);
+  function HandleTemps(e) {
+    setTemps(e.target.value + ' ' + temps)
+    setDogCreate({
+      ...dogCreate,
+      [e.target.name]: [...dogCreate.temperaments, e.target.value]
+    });
+  };
+
+  function onClose(e) {
+    e.preventDefault()
+    let newTemps = dogCreate.temperaments.filter((t) => t !== e.target.value);
+    setDogCreate({...dogCreate,
+      temperaments : newTemps});
   }
 
-  function HandleTemps(e){
-    setTemps(e.target.value+ ' '+ temps)
-    
-    let temporal = {...objCreate}
-    temporal["temperaments"]= [...temporal["temperaments"], e.target.value]
-    setObjCreate(temporal);
-  }
-
-  async function HandleSubmit(e) {
+  function HandleSubmit(e) {
     e.preventDefault();
-    dispatch(sendDogs(objCreate));
-  }
-  
+    dispatch(sendDogs(dogCreate));
+  };
+
   useEffect(() => {
     dispatch(getTemperament());
   }, [dispatch]);
 
   return (
-    <div>
-      <Link to="/Home">Home</Link>
+    <div className={s.all}>
       <form onSubmit={e => HandleSubmit(e)}>
         <div>
-          <label>
-            Name: 
+          <div className={s.text}>
+            <div>
+              Name
+            </div>
             <input
               type="text"
               name="name"
-              value={objCreate.name}
+              value={dogCreate.name}
               onChange={(e) => HandleChange(e)}
             />
-          </label>
+          </div>
         </div>
         <div>
-          <label>
-            Height: 
+          <div className={s.text}>
+            <div>
+              Height
+            </div>
             <input
               type="text"
               name="height"
-              value={objCreate.height}
+              value={dogCreate.height}
               onChange={(e) => HandleChange(e)}
             />
-          </label>
+          </div>
         </div>
         <div>
-          <label>
-            Weight: 
+          <div className={s.text}>
+            <div>
+              Weight
+            </div>
             <input
               type="text"
               name="weight"
-              value={objCreate.weight}
+              value={dogCreate.weight}
               onChange={(e) => HandleChange(e)}
             />
-          </label>
+          </div >
         </div>
         <div>
-          <label>
-            Life span: 
+          <div className={s.text}>
+            <div>
+              Life span
+            </div>
             <input
               type="text"
               name="life_span"
-              value={objCreate.life_span}
+              value={dogCreate.life_span}
               onChange={(e) => HandleChange(e)}
             />
-          </label>
+          </div>
         </div>
         <div>
-          <label>
-            Temperament: <h6>{temps}</h6>
-          </label>
-          <select onChange={(e) => HandleTemps(e)}>
+          <div className={s.divTem} >
+            Temperament/s
+          </div>
+          <select className={s.temp} name="temperaments" onChange={(e) => HandleTemps(e)}>
             {temp &&
               temp.map((e) => {
-                  return <option key={e.id} value={e.temperament}>{e.temperament}</option>;
-                })}
+                return <option key={e.id} value={e.temperament}>{e.temperament}</option>;
+              })}
           </select>
+          <div className={s.view}>
+            {dogCreate.temperaments && dogCreate.temperaments.map((el, id) => <button onClick={(e)=>{onClose(e)}} value={el} className={s.h} key={id}>{el}</button>)}
+          </div>
         </div>
-
         <button type="submit">Create</button>
       </form>
     </div>
   );
-}
+};

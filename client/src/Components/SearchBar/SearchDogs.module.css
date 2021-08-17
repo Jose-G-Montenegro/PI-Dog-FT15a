@@ -1,6 +1,7 @@
-.div{background-image: url('https://www.65ymas.com/uploads/s1/72/06/50/bigstock-artificial-grass-closeup-arti-406527086_1_621x621.jpeg');
-background-size: cover;
-display: flex;
-flex-wrap: wrap;
-align-content: space-around;
-justify-content: space-around;}
+.div{
+    background-color: #12401d;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+}

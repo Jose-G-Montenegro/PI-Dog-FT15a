@@ -1,7 +1,31 @@
 .all {
-    /* background-image: url('https://lh3.googleusercontent.com/proxy/K8-U4b0OIMT6fngmWkbvkrX9dNcqv4BjvrfT_ZEHzKDslMTMWacfmchMtMn4Qk_BScvEVH4vCExxCPcOAYwNcQX1'); */
+    background-image: url('C:\Users\Jocho\OneDrive\Escritorio\HENRY\PI-Dogs\client\src\components\Init\image (2).png');
     background-repeat: no-repeat;
-    
     background-size: cover;
-    background-color: #BBCC8D;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.title {
+    color: rgb(13, 138, 34);
+}
+
+.container{
+    border: outset;
+    border-radius: 3%;
+    height: 150px;
+    width: 200px;
+    background-color: bisque;
+    opacity: 90%;
+}
+
+/* .container:hover{
+    border: inset;
+    border-radius: 3%;
+    height: 150px;
+    width: 200px;
+    background-color: bisque;
+    opacity: 90%;
+} */

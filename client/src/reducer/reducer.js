@@ -22,38 +22,51 @@ const promWeight = (n) => {
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+        
         case GET_BREEDS:
             return {
                 ...state,
                 breeds: action.payload,
                 allBreeds: action.payload,
             }
+
         case GET_TEMPERAMENT:
             return {
                 ...state,
                 temperament: action.payload,
             }
+
         case GET_BYID:
             return {
                 ...state,
                 breedDetail: action.payload,
             }
+
         case GET_BYNAME:
             return {
                 ...state,
                 filterByName: action.payload
             }
+
         case FILTER_TEMPS:
             const allBreeds = state.allBreeds;
-            //console.log(allBreeds.filter(el => el.temperament?.includes(action.payload)));
-            const filterTemps = action.payload === 'all' ?
-                allBreeds :
-                allBreeds.filter(el => el.temperaments?.includes(action.payload));
-            // console.log(filterTemps)
+            console.log(allBreeds);
+            let filt = allBreeds.filter(e => {
+                if (e.temperaments !== undefined) {
+                    if (typeof e.temperaments[0] === 'string') {
+                        return e.temperaments?.includes(action.payload)
+                    }
+                    let arr = e.temperaments?.map(e => e.temperament)
+                    return arr.includes(action.payload)
+                }
+            })
+            // console.log(filt)
             return {
                 ...state,
-                breeds: filterTemps
+                breeds: action.payload === 'all' ?
+                    allBreeds : filt
             }
+
         case FILTER_CREATE:
             const allDogs = state.allBreeds; // cambio el nombre de la const por que rompe
             const filterCreate = action.payload === 'DB' ?
@@ -66,6 +79,7 @@ export default function reducer(state = initialState, action) {
                     state.allBreeds :
                     filterCreate
             }
+
         case ORDER:
             let sortABC = action.payload === 'a_z' ?
                 state.breeds.slice().sort(function (a, b) {
