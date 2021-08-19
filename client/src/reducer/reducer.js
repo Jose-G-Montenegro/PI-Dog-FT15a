@@ -93,20 +93,20 @@ export default function reducer(state = initialState, action) {
             let sortABC = action.payload === 'a_z' ?
                 state.breeds.slice().sort(function (a, b) {
                     //console.log(a.name,b.name)
-                    if (a.name.length > b.name.length) {
+                    if (a.name > b.name) {
                         return 1;
                     }
-                    if (b.name.length > a.name.length) {
+                    if (b.name > a.name) {
                         return -1;
                     }
                     return 0;
                 }) :
                 state.breeds.slice().sort(function (a, b) {
-                    //console.log(a.name.length,b.name.length)
-                    if (a.name.length > b.name.length) {
+                    //console.log(a.name,b.name)
+                    if (a.name > b.name) {
                         return -1;
                     }
-                    if (b.name.length > a.name.length) {
+                    if (b.name > a.name) {
                         return 1;
                     }
                     return 0;

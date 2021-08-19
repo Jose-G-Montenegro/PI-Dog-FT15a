@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 import s from './Init.module.css'
 
 export default function init() {
+
     return (
         <div className={s.all}>
             <div className={s.container}>
