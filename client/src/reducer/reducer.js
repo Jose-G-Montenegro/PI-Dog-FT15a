@@ -9,21 +9,24 @@ const initialState = {
     filterByName: [],
 }
 const promWeight = (n) => {
-    let cor = n.split(' - ');
-    if (cor !== 'NaN') {
-        if (cor[0] !== 'NaN') {
-            let sum = 0;
-            cor.forEach(el => sum += el * 1)
-            return Math.ceil(sum / 2)
+    if (n !== "NaN") {
+        let cor = n.split(' - ');
+        if (cor.length === 2) {
+            if (cor[0] !== "NaN") {
+                let sum = 0;
+                cor.forEach(el => sum += el * 1)
+                return Math.ceil(sum / 2)
+            }
+            else return cor[1]
         }
-        else return cor[1]
+        else return cor[0]
     }
     else return 0
 }
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        
+
         case GET_BREEDS:
             return {
                 ...state,
@@ -47,18 +50,18 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 filterByName: action.payload,
-                page:1
+                page: 1
             }
 
         case PAGE:
-            return{
+            return {
                 ...state,
-                page :action.payload
+                page: action.payload
             }
 
         case FILTER_TEMPS:
             const allBreeds = state.allBreeds;
-            console.log(allBreeds);
+            //console.log(allBreeds);
             let filt = allBreeds.filter(e => {
                 if (e.temperaments !== undefined) {
                     if (typeof e.temperaments[0] === 'string') {
@@ -72,8 +75,9 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 breeds: action.payload === 'all' ?
-                    allBreeds : filt,
-                    page:1
+                    allBreeds :
+                    filt,
+                page: 1
             }
 
         case FILTER_CREATE:
@@ -86,51 +90,37 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 breeds: action.payload === 'all' ?
                     state.allBreeds :
-                    filterCreate
+                    filterCreate,
+                page: 1
             }
 
         case ORDER:
+            let ordAZ = state.breeds.slice().sort(function (a, b) {
+                //console.log(a.name,b.name)
+                if (a.name > b.name) {
+                    return 1;
+                }
+                if (b.name > a.name) {
+                    return -1;
+                }
+                return 0;
+            });
+            let ordWei = state.breeds.slice().sort(function (a, b) {
+                //console.log(a.weight, b.weight)
+                if (promWeight(a.weight) > promWeight(b.weight)) {
+                    return 1;
+                }
+                if (promWeight(b.weight) > promWeight(a.weight)) {
+                    return -1;
+                }
+                return 0;
+            });
             let sortABC = action.payload === 'a_z' ?
-                state.breeds.slice().sort(function (a, b) {
-                    //console.log(a.name,b.name)
-                    if (a.name > b.name) {
-                        return 1;
-                    }
-                    if (b.name > a.name) {
-                        return -1;
-                    }
-                    return 0;
-                }) :
-                state.breeds.slice().sort(function (a, b) {
-                    //console.log(a.name,b.name)
-                    if (a.name > b.name) {
-                        return -1;
-                    }
-                    if (b.name > a.name) {
-                        return 1;
-                    }
-                    return 0;
-                });
+                ordAZ :
+                ordAZ.reverse();
             let sortWeigth = action.payload === 'menos' ?
-                state.breeds.slice().sort(function (a, b) {
-                    console.log(a.weight, b.weight)
-                    if (promWeight(a.weight) > promWeight(b.weight)) {
-                        return 1;
-                    }
-                    if (promWeight(b.weight) > promWeight(a.weight)) {
-                        return -1;
-                    }
-                    return 0;
-                }) :
-                state.breeds.slice().sort(function (a, b) {
-                    if (promWeight(a.weight) > promWeight(b.weight)) {
-                        return -1;
-                    }
-                    if (promWeight(b.weight) > promWeight(a.weight)) {
-                        return 1;
-                    }
-                    return 0;
-                });
+                ordWei :
+                ordWei.reverse();
             return {
                 ...state,
                 breeds: action.payload.includes('_') ?

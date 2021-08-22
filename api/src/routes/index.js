@@ -53,12 +53,9 @@ router.get('/dogs', async (req, res) => {
     let allDog = await getAllInfo(); // pido la info de la BdD y de la api 
     if (name) {// si existe un query
         let dogName = allDog.filter(el => el.name.toLowerCase().includes(name.toLowerCase())); // paso el name del llamado y el name del query a minuscula para poder compararlos
-        dogName.length ? // consulto si existe dogName - es un ternario
+        dogName.length ? // consulto si existe algo en dogName - es un ternario
             res.status(200).send(dogName) :
-            res.status(400).send('La raza de perro ingresada no existe');
-    }
-    else if (name === undefined) {
-        res.status(200).send(allDog);
+            res.status(404).send('La raza de perro ingresada no existe');
     }
     else {
         res.status(200).send(allDog);

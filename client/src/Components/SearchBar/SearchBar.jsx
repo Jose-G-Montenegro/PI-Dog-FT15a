@@ -18,8 +18,7 @@ function SearchBar() {
     function handleSubmit() {
         if (search !== '') {
             dispatch(getByName(search));
-            console.log(search)
-            setSearch('');
+            //console.log(search)
         } else {
             return alert('ingresa raza')
         }

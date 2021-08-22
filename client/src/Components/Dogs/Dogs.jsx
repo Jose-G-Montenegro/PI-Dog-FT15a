@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Dog from '../Dog/Dog';
@@ -34,7 +34,7 @@ export default function Dogs() {
                 <Paged breedsPerPage={breedsPerPage} breeds={breeds.length} paged={paged} />
             </div>
             <div className={s.div}>{
-                currentBreeds && currentBreeds.map(breed => {
+                currentBreeds && currentBreeds?.map(breed => {
                     return <Dog
                         key={breed.id}
                         name={breed.name}

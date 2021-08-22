@@ -18,6 +18,7 @@ export default function SearchDogs() {
     const indexOfLastBreeds = nPage * breedsPerPage; // indice (pos) de laultima raza raza
     const indexOfFirstBreeds = indexOfLastBreeds - breedsPerPage; // indice (pos) de la primera raza
     const currentBreeds = filterByName.slice(indexOfFirstBreeds, indexOfLastBreeds); //razas renderizando en la pag
+    console.log(typeof currentBreeds)
     const paged = (pageNumber) => {
         dispatch(page(pageNumber))
     }
@@ -29,7 +30,7 @@ export default function SearchDogs() {
                 <Paged breedsPerPage={breedsPerPage} breeds={filterByName.length} paged={paged} />
             </div>
             <div className={s.div}>{
-                currentBreeds ? currentBreeds.map(breed => {
+                currentBreeds.length>0 ? currentBreeds.map(breed => {
                     console.log(breed)
                     return <Dog
                         key={breed.id}
@@ -41,8 +42,10 @@ export default function SearchDogs() {
                         temperament={breed.temperaments}
                         life_span={breed.life_span}
                     />
-                }) :
-                    alert("raza no existente")
+                }) :<div>
+                    <h2></h2>
+                    <img src="https://c.tenor.com/kExMMCcDRJkAAAAC/take-your-dog-to-work-day-good-boy.gif" />
+                </div>
             }
             </div>
         </div>
