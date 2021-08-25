@@ -9,6 +9,7 @@ import Home from './components/Home/Home';
 import CreateDog from './components/CreateDog/CreateDog';
 import SearchDogs from './components/SearchBar/SearchDogs';
 import Detail from './components/Detail/Detail';
+import About from './components/About/About';
 
 //import NewForm from './components/CreateDog/NewForm';
 
@@ -27,6 +28,7 @@ function App() {
       <Route exact path="/dog/home/:id" component={Detail} />
       <Route exact path='/dog/createDog' component={CreateDog} />
       <Route exact path='/dog/search' component={SearchDogs} />
+      <Route exact path='/dog/about' component={About} />
     </div>
   );
 }

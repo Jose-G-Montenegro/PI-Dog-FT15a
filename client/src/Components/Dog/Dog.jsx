@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import s from './Dog.module.css'
 
 export default function Dog({ name, id, image, temperament }) {
-    console.log(temperament)
+    //console.log(temperament)
     return (
         <div className={s.all}>
             <Link to={`/dog/home/${id}`}>
@@ -12,8 +12,12 @@ export default function Dog({ name, id, image, temperament }) {
                 <img src={image} alt="dog img" className={s.img} />
                 <h2 className={s.temp}>{temperament ?
                     typeof temperament[0] === 'object' ?
-                        temperament.map(el => ' ' + el.temperament + ' ') :
-                        temperament.map(el => ' ' + el + ' ') :
+                        temperament.length > 5 ?
+                            temperament.slice(0,5).map(el => ' ' + el.temperament + ' ') :
+                            temperament.map(el => ' ' + el.temperament + ' ') :
+                        temperament.length > 5 ?
+                            temperament.slice(0,5).map(el => ' ' + el + ' ')  :
+                            temperament.map(el => ' ' + el + ' ') :
                     'without temperaments'} </h2>
             </Link>
         </div>

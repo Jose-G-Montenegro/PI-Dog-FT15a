@@ -56,6 +56,11 @@ export default function NavBar() {
                 <div>
                     <SearchBar />
                 </div>
+                <div>
+                    <Link to='/dog/about'>
+                        <button>About</button>
+                    </Link>
+                </div>
             </div>
             <div className={s.selectors}>
                 <select className={s.ind} onChange={e => filterPerCreate(e)} >

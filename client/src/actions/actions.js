@@ -9,7 +9,6 @@ export const FILTER_TEMPS = 'FILTER_TEMPS';
 export const FILTER_CREATE = 'FILTER_CREATE';
 export const PAGE = 'PAGE';
 
-
 // aqui se conecta el Back y el Front
 export function getBreeds() {
     return function (dispatch) {
