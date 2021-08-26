@@ -33,10 +33,12 @@ export default function NavBar() {
     }
     return (
         <div className={s.all}>
-            
+
             <div className={s.navBtn}>
                 <div>
-                    <h1>DOGS</h1>
+                    <Link to="/">
+                        <h1>DOGS</h1>
+                    </Link>
                 </div>
                 {/* <div>
                     <Link to='/'>
@@ -45,12 +47,12 @@ export default function NavBar() {
                 </div> */}
                 <div>
                     <Link to='/dog/home'>
-                        <button>Home</button>
+                        <button className={s.button}>Home</button>
                     </Link>
                 </div>
                 <div>
                     <Link to='/dog/createDog'>
-                        <button>Create you breed</button>
+                        <button className={s.button}>Create you breed</button>
                     </Link>
                 </div>
                 <div>
@@ -58,26 +60,35 @@ export default function NavBar() {
                 </div>
                 <div>
                     <Link to='/dog/about'>
-                        <button>About</button>
+                        <button className={s.button}>About</button>
                     </Link>
                 </div>
             </div>
             <div className={s.selectors}>
+                <div>
+                <h2>Filter by create</h2>
                 <select className={s.ind} onChange={e => filterPerCreate(e)} >
                     <option value="all">All</option>
                     <option value="api">Api Dogs</option>
                     <option value="DB">Createds</option>
                 </select>
+                </div>
+                <div>
+                <h2> Order by</h2>
                 <select className={s.ind} onChange={e => orderPage(e)} >
                     <option value="mas">+ Weigth</option>
                     <option value="menos">- Weigth</option>
                     <option value="a_z">A-Z</option>
                     <option value="z_a">Z-A</option>
                 </select>
+                </div>
+                <div>
+                    <h2>Filter by Temperament</h2>
                 <select className={s.ind} onChange={e => filterByTemps(e)}>
                     <option value="all">All</option>
                     {temperament && temperament.map(el => <option key={el.id} value={el.temperament}>{el.temperament}</option>)}
                 </select>
+                </div>
             </div>
         </div>
     )

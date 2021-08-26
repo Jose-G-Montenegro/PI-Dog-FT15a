@@ -1,0 +1,55 @@
+.div {
+    background-color: blanchedalmond;
+    width: 800px;
+    margin-left: 30%;
+    font-size: x-large;
+}
+
+.all {
+    background-image: url("https://i.pinimg.com/originals/80/28/36/802836ac68385132474a8839e7f654f6.gif");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: contain;
+}
+
+.p {    
+    font-weight: bold;
+    font-size: 26.3px;
+    color: red;
+    border: double;
+    width: 300px;
+    margin: 1.5%;
+    border-radius: 50px;
+}
+
+.ul1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0%;
+}
+
+.subTitle1 {
+    font-weight: bold;
+    font-size: 28px;
+}
+.subTitle2 {
+    font-weight: bold;
+    font-size: 28px;
+    margin-top: 8%;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.link {
+    color: red;
+    font-weight: bold;
+}
+.link:hover{
+    color: rgb(66, 3, 3);
+    font-weight: bold;
+}

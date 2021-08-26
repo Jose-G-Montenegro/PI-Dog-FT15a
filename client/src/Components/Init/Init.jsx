@@ -11,7 +11,7 @@ export default function init() {
             <div className={s.container}>
                 <h1 className={s.title}>Welcome</h1>
                 <Link to='/dog/home'>
-                    <button>Home</button>
+                    <button className={s.btn}>Home</button>
                 </Link>
             </div>
         </div>
