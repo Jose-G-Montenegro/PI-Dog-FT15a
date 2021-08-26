@@ -65,15 +65,15 @@ export default function NavBar() {
                 </div>
             </div>
             <div className={s.selectors}>
-                <div>
-                <h2>Filter by create</h2>
+                <div className={s.cont}>
+                <h2>Filter by Create</h2>
                 <select className={s.ind} onChange={e => filterPerCreate(e)} >
                     <option value="all">All</option>
                     <option value="api">Api Dogs</option>
                     <option value="DB">Createds</option>
                 </select>
                 </div>
-                <div>
+                <div className={s.cont}>
                 <h2> Order by</h2>
                 <select className={s.ind} onChange={e => orderPage(e)} >
                     <option value="mas">+ Weigth</option>
@@ -82,7 +82,7 @@ export default function NavBar() {
                     <option value="z_a">Z-A</option>
                 </select>
                 </div>
-                <div>
+                <div className={s.cont}>
                     <h2>Filter by Temperament</h2>
                 <select className={s.ind} onChange={e => filterByTemps(e)}>
                     <option value="all">All</option>

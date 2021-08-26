@@ -1,4 +1,4 @@
-.all{
+.all {
     background-color: #8AA74B;
     height: 88.6vh;
     display: flex;
@@ -7,16 +7,31 @@
     box-shadow: 0px 8px #597d09 inset;
 }
 
-.card{
-    border: solid;
-    height: 700px;
-    width: 600px;
-    justify-content: space-evenly;
+.card {
+    display: flex;
+    height: 600px;
+    width: 1000px;
     margin: 8px;
+    align-items: center;
+    background-color: #597d09;
 }
 
-.img{
-    height: 300px;
-    width: 350px;
+.img {
+    height: 500px;
+    width: 550px;
     border-radius: 5%;
+    margin: 2%;
+}
+
+.cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    font-family: ui-monospace;
+    color: black;
+    font-style: oblique;
+    font-weight: bold;
+    -webkit-text-stroke: thin;
 }

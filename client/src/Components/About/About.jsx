@@ -20,8 +20,8 @@ function About() {
                 <a href="https://docs.thedogapi.com/" className={s.link} >The Dog Api</a>
                 <div className={s.subTitle2}>Contacto</div>
                 <ul className={s.links}>
-                    <a href="https://www.linkedin.com/in/jos%C3%A9-montenegro94/" className={s.link} >LinkedIn</a>
-                    <a href="https://github.com/Jocho94" className={s.link} >GitHub</a>
+                    <a href="https://www.linkedin.com/in/jos%C3%A9-montenegro94/" className={s.link} >-LinkedIn-</a>
+                    <a href="https://github.com/Jocho94" className={s.link} >-GitHub-</a>
                 </ul>
             </div>
         </div>

@@ -26,7 +26,7 @@
   color: rgb(0, 0, 0);
   padding: .4em 1.4em .3em .8em;
   max-width: 100%;
-  margin: 20px auto;
+  margin: 10px;
   border: 1px solid #aaa;
       border-top-color: rgb(170, 170, 170);
       border-right-color: rgb(170, 170, 170);
@@ -89,4 +89,11 @@
     font-size: -webkit-xxx-large;
     text-decoration: none;
     color: #BBCC8D ;
+  }
+
+  .cont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50px;
   }

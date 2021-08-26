@@ -19,18 +19,22 @@ function Detail() {
     console.log(id)
     useEffect(() => {
         dispatch(getById(id));
-    }, [dispatch,id]);
+    }, [dispatch, id]);
 
     return (
         <div className={s.all}>
             <div className={s.card}>
-                <h2>{breed.name}</h2>
-                <img src={breed.image} alt="dog img" className={s.img} />
-                <h2>{breed.temperaments?
-              typeof breed.temperaments[0] === 'object'? breed.temperaments.map(el => ' '+el.temperament +' ') :breed.temperaments.map(el => ' '+el +' '):'sin temperamentos'}</h2>
-                <h2>height: {breed.height} cm</h2>
-                <h2>weight: {breed.weight} kg</h2>
-                <h2>life_span: {breed.life_span}</h2>
+                <div>
+                    <img src={breed.image} alt="dog img" className={s.img} />
+                </div>
+                <div className={s.cont}>
+                    <h2 className={s.name}>{breed.name}</h2>
+                    <h2>{breed.temperaments ?
+                        typeof breed.temperaments[0] === 'object' ? breed.temperaments.map(el => ' ' + el.temperament + ' ') : breed.temperaments.map(el => ' ' + el + ' ') : 'sin temperamentos'}</h2>
+                    <h2>height: {breed.height} cm</h2>
+                    <h2>weight: {breed.weight} kg</h2>
+                    <h2>life_span: {breed.life_span}</h2>
+                </div>
             </div>
         </div>
     )

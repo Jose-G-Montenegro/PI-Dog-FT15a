@@ -43,8 +43,8 @@ export default function SearchDogs() {
                     />
                 }) :
                     <div>
-                        <h2>the registered breed does not exist</h2>
-                        <img src="https://c.tenor.com/kExMMCcDRJkAAAAC/take-your-dog-to-work-day-good-boy.gif" />
+                        <h2 className={s.txt}>The registered breed does not exist</h2>
+                        <img className={s.img} src="https://c.tenor.com/kExMMCcDRJkAAAAC/take-your-dog-to-work-day-good-boy.gif" />
                     </div>
             }
             </div>

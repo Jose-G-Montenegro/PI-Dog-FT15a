@@ -7,7 +7,6 @@ import s from './CreateDog.module.css'
 
 export default function Send() {
 
-  const [temps, setTemps] = useState("");
   const [dogCreate, setDogCreate] = useState({
     name: "",
     height: "",
@@ -18,7 +17,7 @@ export default function Send() {
 
   const dispatch = useDispatch();
   const temp = useSelector((state) => state.temperament);
-  //console.log(temp)
+  console.log(temp)
 
   function HandleChange(e) {
     setDogCreate({
@@ -28,23 +27,27 @@ export default function Send() {
   };
 
   function HandleTemps(e) {
-    setTemps(e.target.value + ' ' + temps)
-    setDogCreate({
-      ...dogCreate,
-      [e.target.name]: [...dogCreate.temperaments, e.target.value]
-    });
+    if (!dogCreate.temperaments?.includes(e.target.value)) {
+      setDogCreate({
+        ...dogCreate,
+        [e.target.name]: [...dogCreate.temperaments, e.target.value]
+      });
+    }
   };
 
   function onClose(e) {
     e.preventDefault()
     let newTemps = dogCreate.temperaments.filter((t) => t !== e.target.value);
-    setDogCreate({...dogCreate,
-      temperaments : newTemps});
+    setDogCreate({
+      ...dogCreate,
+      temperaments: newTemps
+    });
   }
 
   function HandleSubmit(e) {
     e.preventDefault();
     dispatch(sendDogs(dogCreate));
+    alert("create you dog")
   };
 
   useEffect(() => {
@@ -117,10 +120,10 @@ export default function Send() {
               })}
           </select>
           <div className={s.view}>
-            {dogCreate.temperaments && dogCreate.temperaments.map((el, id) => <button onClick={(e)=>{onClose(e)}} value={el} className={s.h} key={id}>{el}</button>)}
+            {dogCreate.temperaments && dogCreate.temperaments.map((el, id) => <button onClick={(e) => { onClose(e) }} value={el} className={s.h} key={id}>{el}</button>)}
           </div>
         </div>
-        <button type="submit">Create</button>
+        <button className={s.create} type="submit">Create</button>
       </form>
     </div>
   );
