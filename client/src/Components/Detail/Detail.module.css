@@ -26,6 +26,7 @@
 .cont {
     display: flex;
     flex-direction: column;
+    margin: 5%;
 }
 
 .name {
